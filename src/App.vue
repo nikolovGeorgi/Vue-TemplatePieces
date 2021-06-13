@@ -1,14 +1,14 @@
 <template>
-    <Card />
+    <CardAnimated />
 </template>
 
 <script>
-import Card from './components/Card.vue';
+import CardAnimated from './components/CardAnimated.vue';
 
 export default {
     name: 'App',
     components: {
-        Card,
+        CardAnimated,
     },
 };
 </script>
