@@ -16,7 +16,7 @@
 
 <script>
 export default {
-    name: 'Card-Animated',
+    name: 'CardAnimated',
 };
 </script>
 
