@@ -4,7 +4,6 @@ ___
 ### In more Details:
 
 Card
--
 <dl>
   <dt>Consists of:</dt>
   <dd>Card > Container > { title, body, button }</dd>
@@ -12,8 +11,7 @@ Card
 </dl>
 
 #
-CardAnimation
--
+CardAnimated
 <dl>
   <dt>Same as Card, however:</dt>
   <dd>The container is animated to appear from the bottom of the card.</dd>
