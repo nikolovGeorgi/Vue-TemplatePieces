@@ -1,5 +1,5 @@
 <template>
-    <div class="card">
+    <div class="card card--blur">
         <div class="card-content">
             <h2 class="card-title">
                 This is title
@@ -27,6 +27,18 @@ export default {};
     max-width: 35ch;
     border-radius: 0.5rem;
     overflow: hidden;
+
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card--blur {
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    will-change: transform;
 }
 
 .card-content {
