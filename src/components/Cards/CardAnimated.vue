@@ -21,8 +21,13 @@ export default {
 </script>
 
 <style scoped>
+/* 
+    $ Adjustments to the Card itself 
+*/
 .card {
-    --clr-blue-light: rgb(67 186 255);
+    --clr-blue-light: #43baff;
+    --tr: 0.5s;
+
     background-image: url(../assets/background.jpg);
     background-size: cover;
     padding: 10rem 0 0;
@@ -30,7 +35,7 @@ export default {
     border-radius: 0.5rem;
     overflow: hidden;
 
-    transition: transform 0.3s ease-in-out;
+    transition: transform var(--tr) ease;
 }
 
 .card:hover {
@@ -51,8 +56,26 @@ export default {
         hsl(20 0% 0% / 0.3) 20%,
         hsl(0 0% 0% / 1)
     );
+    transform: translateY(65%);
+    transition: transform var(--tr) ease;
 }
 
+.card-content > *:not(.card-title) {
+    opacity: 0;
+    transition: opacity var(--tr) linear;
+}
+
+.card:hover .card-content {
+    transform: translateY(0);
+}
+
+.card:hover .card-content > * {
+    opacity: 1;
+}
+
+/* 
+    $ Adjustments to the Card title 
+*/
 .card-title {
     position: relative;
     width: fit-content;
@@ -63,16 +86,30 @@ export default {
     content: '';
     position: absolute;
     left: calc(var(--pad) * -1);
-    bottom: 0;
+    bottom: -4px;
     height: 4px;
     width: calc(100% + var(--pad));
     background: var(--clr-blue-light);
+
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--tr) ease-in-out;
 }
 
+.card:hover .card-title::after {
+    transform: scaleX(1);
+}
+
+/* 
+    $ Adjustments to the Card paragraph 
+*/
 .card-body {
     color: rgba(255, 255, 255, 0.9);
 }
 
+/*
+    $ Adjustments to the Card button 
+*/
 .button {
     cursor: pointer;
     display: inline-block;

@@ -21,6 +21,7 @@ export default {
 </script>
 
 <style scoped>
+/* Adjustments to the Card itself */
 .card {
     --clr-blue-light: rgb(67 186 255);
     background-image: url(../assets/background.jpg);
@@ -53,6 +54,7 @@ export default {
     );
 }
 
+/* Adjustments to the Card title */
 .card-title {
     position: relative;
     width: fit-content;
@@ -63,16 +65,18 @@ export default {
     content: '';
     position: absolute;
     left: calc(var(--pad) * -1);
-    bottom: 0;
+    bottom: -4px;
     height: 4px;
     width: calc(100% + var(--pad));
     background: var(--clr-blue-light);
 }
 
+/* Adjustments to the Card paragraph */
 .card-body {
     color: rgba(255, 255, 255, 0.9);
 }
 
+/* Adjustments to the Card button */
 .button {
     cursor: pointer;
     display: inline-block;
