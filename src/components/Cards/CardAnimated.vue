@@ -35,21 +35,62 @@ $pad: 1.5rem;
     background-image: url($img1);
     background-size: cover;
     padding: 10rem 0 0;
-    max-width: 35ch;
+    max-width: 36ch;
     border-radius: 0.5rem;
     overflow: hidden;
 
-    transition: transform $tr ease-in-out;
+    transition: transform $tr ease;
 
-    &:hover {
+    &:hover,
+    &:focus-within {
         transform: scale(1.05);
+        transition-delay: $tr;
 
-        .card-content {
+        .card-content,
+        .card-content:not(:focus-within) {
             transform: translateY(0);
+            transition-delay: $tr;
+            backface-visibility: hidden;
+        }
+
+        /* 
+            $ Minimizing glitches in case the user presses "tab" on the keyboard.
+        */
+        .card-content::before,
+        .card-content:focus-within {
+            animation: animate $tr cubic-bezier(0.37, -0.35, 0.32, 0.82);
+
+            @keyframes animate {
+                0% {
+                    opacity: 0;
+                    color: rgba($color: white, $alpha: 0);
+                }
+                20% {
+                    opacity: 0.2;
+                    color: rgba($color: white, $alpha: 0.2);
+                }
+                40% {
+                    opacity: 0.4;
+                    color: rgba($color: white, $alpha: 0.4);
+                }
+                60% {
+                    opacity: 0.6;
+                    color: rgba($color: white, $alpha: 0.6);
+                }
+                80% {
+                    opacity: 0.8;
+                    color: rgba($color: white, $alpha: 0.8);
+                }
+                100% {
+                    opacity: 1;
+                    color: white;
+                }
+            }
         }
 
         .card-content > *:not(.card-title) {
             opacity: 1;
+            transition-delay: calc(2 * #{$tr});
         }
 
         .card-title::after {
@@ -111,7 +152,7 @@ $pad: 1.5rem;
     $ Adjustments to the Card paragraph
 */
 .card-body {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.95);
 }
 
 /*
@@ -129,6 +170,7 @@ $pad: 1.5rem;
     &:hover,
     &:focus {
         background-color: rgb(170, 224, 255);
+        outline: 0;
     }
 }
 </style>
