@@ -40,9 +40,90 @@ $pad: 1.5rem;
     overflow: hidden;
 
     transition: transform $tr ease;
+}
+
+.card--blur {
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    will-change: transform;
+}
+
+/*
+    $ Adjustments to the container of { title, body, button }
+*/
+.card-content {
+    padding: $pad;
+    background: linear-gradient(
+        rgba(0, 0%, 0%, 0),
+        rgba(20, 0%, 0%, 0.3) 20%,
+        rgba(0, 0%, 0%, 1)
+    );
+}
+
+/*
+    $ Adjustments to the Card title
+*/
+.card-title {
+    position: relative;
+    width: fit-content;
+    max-width: 100%;
+
+    &:after {
+        content: '';
+        position: absolute;
+        left: calc(#{$pad} * -1);
+        bottom: -4px;
+        height: 4px;
+        width: calc(100% + #{$pad});
+        background: $clr-blue-light;
+
+        transform-origin: left;
+        transition: transform $tr ease;
+    }
+}
+
+/*
+    $ Adjustments to the Card paragraph
+*/
+.card-body {
+    color: rgba(255, 255, 255, 0.95);
+}
+
+/*
+    $ Adjustments to the Card button
+*/
+.button {
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    background-color: $clr-blue-light;
+    padding: 0.25em 1.25em;
+    border-radius: 0.25em;
 
     &:hover,
-    &:focus-within {
+    &:focus {
+        background-color: rgb(170, 224, 255);
+        outline: 0;
+    }
+}
+
+/* 
+    $ Extracted hover styles to account for touch devices.
+*/
+@media (hover) {
+    .card-content {
+        transform: translateY(65%);
+        transition: transform $tr ease;
+
+        & > *:not(.card-title) {
+            opacity: 0;
+            transition: opacity $tr linear;
+        }
+    }
+
+    .card:hover,
+    .card:focus-within {
         transform: scale(1.05);
         transition-delay: $tr;
 
@@ -97,80 +178,24 @@ $pad: 1.5rem;
             transform: scaleX(1);
         }
     }
-}
 
-.card--blur {
-    transform: translate3d(0, 0, 0);
-    backface-visibility: hidden;
-    will-change: transform;
-}
-
-/*
-    $ Adjustments to the container of { title, body, button }
-*/
-.card-content {
-    padding: $pad;
-    background: linear-gradient(
-        rgba(0, 0%, 0%, 0),
-        rgba(20, 0%, 0%, 0.3) 20%,
-        rgba(0, 0%, 0%, 1)
-    );
-
-    transform: translateY(65%);
-    transition: transform $tr ease;
-
-    & > *:not(.card-title) {
-        opacity: 0;
-        transition: opacity $tr linear;
-    }
-}
-
-/*
-    $ Adjustments to the Card title
-*/
-.card-title {
-    position: relative;
-    width: fit-content;
-    max-width: 100%;
-
-    &:after {
-        content: '';
-        position: absolute;
-        left: calc(#{$pad} * -1);
-        bottom: -4px;
-        height: 4px;
-        width: calc(100% + #{$pad});
-        background: $clr-blue-light;
-
+    .card-title::after {
         transform: scaleX(0);
-        transform-origin: left;
-        transition: transform $tr ease;
     }
 }
 
-/*
-    $ Adjustments to the Card paragraph
+/* 
+    $ When user has turned off animations from OS.
 */
-.card-body {
-    color: rgba(255, 255, 255, 0.95);
-}
-
-/*
-    $ Adjustments to the Card button
-*/
-.button {
-    cursor: pointer;
-    display: inline-block;
-    text-decoration: none;
-    color: black;
-    background-color: $clr-blue-light;
-    padding: 0.25em 1.25em;
-    border-radius: 0.25em;
-
-    &:hover,
-    &:focus {
-        background-color: rgb(170, 224, 255);
-        outline: 0;
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0ms !important;
+        transition-delay: 0ms !important;
+        scroll-behavior: auto !important;
     }
 }
 </style>
