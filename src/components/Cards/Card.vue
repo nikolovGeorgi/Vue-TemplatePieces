@@ -24,7 +24,7 @@ export default {
 /* Adjustments to the Card itself */
 .card {
     --clr-blue-light: rgb(67 186 255);
-    background-image: url(../assets/background.jpg);
+    background-image: url(../../assets/background.jpg);
     background-size: cover;
     padding: 10rem 0 0;
     max-width: 35ch;
