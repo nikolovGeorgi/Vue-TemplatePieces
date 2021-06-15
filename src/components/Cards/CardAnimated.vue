@@ -2,14 +2,14 @@
     <div class="card card--blur">
         <div class="card-content">
             <h2 class="card-title">
-                This is title
+                {{ title }}
             </h2>
             <p class="card-body">
                 This is some text: Lorem ipsum dolor sit amet consectetur
                 adipisicing elit. Saepe repellendus impedit eum quam eaque
                 alias!
             </p>
-            <a href="#" class="button">This is button</a>
+            <a href="#" class="button">{{ buttonText }}</a>
         </div>
     </div>
 </template>
@@ -17,6 +17,12 @@
 <script>
 export default {
     name: 'CardAnimated',
+    data() {
+        return {
+            title: 'Willy',
+            buttonText: 'This is button',
+        };
+    },
 };
 </script>
 
