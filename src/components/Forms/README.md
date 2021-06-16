@@ -6,8 +6,14 @@ ___
 ### SignUpBasic
 <dl>
   <dt>Consists of:</dt>
-  <dd>Form > Form-Fields > { input:{firstName, email}, button }</dd>
-
+  <dd>Form > Form-Fields > Button</dd>
+  <dd>
+    Inputs:
+      <ul>
+        <li>First Name</li>
+        <li>Email</li>
+      </ul>
+  </dd>
   <dd>Media breakpoint: 600px</dd>
   <dd>No animations.</dd>
 </dl>
