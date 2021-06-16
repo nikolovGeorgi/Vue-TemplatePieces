@@ -21,7 +21,7 @@
             />
         </div>
         <button class="form-button" type="submit">
-            signup
+            {{btnText}}
         </button>
     </form>
 </template>
@@ -33,6 +33,11 @@ import { reactive } from 'vue';
 
 export default {
     name: 'SignUpBasic',
+    data() {
+        return {
+            btnText: 'signup',
+        }
+    },
     setup() {
         const formData = reactive({ firstName: '', email: '' });
         const Register = async () => {
