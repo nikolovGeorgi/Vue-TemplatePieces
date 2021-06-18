@@ -127,7 +127,7 @@ img {
 }
 
 .title {
-	margin: 0.5em auto;
+	margin: 0.5em 0;
 	width: fit-content;
 	color: rgba($color: white, $alpha: 0.95);
 }
@@ -232,6 +232,7 @@ img {
 			transform: translateY(-40%) scale(0.75);
 		}
 		.title {
+			margin-inline: auto;
 			transform: translateY(-650%);
 			text-align: center;
 		}
