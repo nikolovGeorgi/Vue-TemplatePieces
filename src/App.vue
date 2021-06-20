@@ -1,11 +1,32 @@
 <template>
+	<BackHome v-if="!home.isHome" />
 	<router-view />
 </template>
 
 <script>
+import BackHome from "@/components/BackHome.vue";
+import { useRoute } from "vue-router";
+import { reactive, watch } from "vue";
+
 export default {
 	name: "App",
-	components: {},
+	components: {
+		BackHome,
+	},
+	setup() {
+		const route = useRoute();
+
+		let home = reactive({ isHome: false });
+		watch(
+			() => route.name,
+			() => {
+				route.name === "Home"
+					? (home.isHome = true)
+					: (home.isHome = false);
+			}
+		);
+		return { home };
+	},
 };
 </script>
 

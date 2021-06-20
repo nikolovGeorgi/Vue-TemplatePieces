@@ -33,7 +33,7 @@ export default {
 }
 
 p {
-	margin-block: 1em;
+	margin-block: 1.25em;
 }
 
 .card:hover {
@@ -62,7 +62,7 @@ p {
 	width: fit-content;
 	max-width: 100%;
 }
-
+/* Make a line under the title */
 .card-title::after {
 	content: "";
 	position: absolute;
