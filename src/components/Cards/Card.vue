@@ -25,7 +25,7 @@ export default {
 	background-image: url(../../assets/background.jpg);
 	background-size: cover;
 	padding: 10rem 0 0;
-	max-width: 35ch;
+	max-width: 18em;
 	border-radius: 0.5rem;
 	overflow: hidden;
 

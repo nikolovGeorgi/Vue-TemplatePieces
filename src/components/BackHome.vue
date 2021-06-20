@@ -11,6 +11,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.back-home {
+	text-align: center;
+	margin-block: 2.5em;
+}
+
 .link {
 	color: #00ffff;
 	text-decoration: none;

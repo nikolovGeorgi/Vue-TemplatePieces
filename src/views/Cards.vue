@@ -1,13 +1,11 @@
 <template>
-	<div class="container">
-		<div class="cards">
-			<component
-				class="card"
-				:is="currentComponent"
-				v-for="currentComponent in allComponents"
-				:key="currentComponent"
-			/>
-		</div>
+	<div class="cards">
+		<component
+			class="card"
+			:is="currentComponent"
+			v-for="currentComponent in allComponents"
+			:key="currentComponent"
+		/>
 	</div>
 </template>
 
@@ -32,24 +30,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-.home {
-	margin-block: 1em;
-}
 .cards {
-	width: #{"min(90%, 75rem)"};
 	display: grid;
 	grid-auto-flow: row;
-	gap: 1em;
+	gap: 2em;
+	& > * {
+		place-self: center;
+	}
 }
 
 @media (min-width: 55em) {
 	.cards {
 		grid-auto-flow: column;
+		align-items: center;
 	}
 }
 </style>
