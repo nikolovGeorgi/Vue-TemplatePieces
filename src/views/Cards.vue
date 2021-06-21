@@ -1,11 +1,15 @@
 <template>
 	<div class="cards">
-		<component
-			class="card"
-			:is="currentComponent"
+		<div
+			class="component"
 			v-for="currentComponent in allComponents"
 			:key="currentComponent"
-		/>
+		>
+			<h3 class="component-name">
+				{{ currentComponent.name }}
+			</h3>
+			<component :is="currentComponent" />
+		</div>
 	</div>
 </template>
 
@@ -23,6 +27,7 @@ export default {
 			allComponents[componentName] = defineAsyncComponent(() =>
 				import("@/components/Cards/" + component)
 			);
+			allComponents[componentName].name = componentName;
 		});
 		return { allComponents };
 	},
@@ -37,6 +42,10 @@ export default {
 	& > * {
 		place-self: center;
 	}
+}
+
+.component-name {
+	margin-bottom: 0.5em;
 }
 
 @media (min-width: 55em) {

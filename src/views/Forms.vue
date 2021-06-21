@@ -1,11 +1,15 @@
 <template>
 	<div class="forms">
-		<component
-			class="form"
-			:is="currentComponent"
+		<div
+			class="component"
 			v-for="currentComponent in allComponents"
 			:key="currentComponent"
-		/>
+		>
+			<h3 class="component-name">
+				{{ currentComponent.name }}
+			</h3>
+			<component :is="currentComponent" />
+		</div>
 	</div>
 </template>
 
@@ -23,6 +27,7 @@ export default {
 			allComponents[componentName] = defineAsyncComponent(() =>
 				import("@/components/Forms/" + component)
 			);
+			allComponents[componentName].name = componentName;
 		});
 		return { allComponents };
 	},
@@ -34,6 +39,10 @@ export default {
 	display: grid;
 	grid-auto-flow: row;
 	gap: 2em;
+}
+
+.component-name {
+	margin-bottom: 0.5em;
 }
 
 @media (min-width: 55em) {
