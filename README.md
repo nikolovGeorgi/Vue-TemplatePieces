@@ -12,8 +12,7 @@
 
 #### Reusable components plug & play:
 
-1. Pick a component to test from ./src/components
-2. Import the chosen component in App.vue
-   - Example given with Home.vue
-3. Once app is running, check localhost:8080
-4. Rinse & Repeat
+1. Once app is running, check localhost:8080
+2. Components are listed under categories, such as: Cards or Forms.
+3. Choose a category, and all components in it will be displayed for preview.
+4. Each component has its name shown as well. The corresponding files can be located in /src/components/< category >
